@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: sample-nodejs-app
+spec:
+  replicas: 1
+  #revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: sample-nodejs-app
+  template:
+    metadata:
+      labels:
+        app: sample-nodejs-app
+    spec:
+      containers:
+      - name: sample-nodejs-app
+        image: index.docker.io/manikanthreddy/sample-nodejs-app #gcr.io/heptio-images/ks-guestbook-demo:0.2
+        #name: sample-nodejs-app
+        ports:
+        - containerPort: 80
