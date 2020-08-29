@@ -1,0 +1,21 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: osm-lcm
+spec:
+  replicas: 1
+  #revisionHistoryLimit: 2
+  selector:
+    matchLabels:
+      app: osm-lcm
+  template:
+    metadata:
+      labels:
+        app: osm-lcm
+    spec:
+      containers:
+      - name: osm-lcm
+        image: index.docker.io/manikanthreddy/osm_lcm #gcr.io/heptio-images/ks-guestbook-demo:0.2
+        #name: osm-lcm
+        ports:
+        - containerPort: 80
